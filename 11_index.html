@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>타임아웃</title>
+</head>
+<body>
+  <h2>버튼을 누르면 2초 뒤에 알림이 떠요</h2>
+  <button type="button" id="btn_alert">CLICK!</button>
+  <script>
+    function showMessage(msg){
+      alert(msg)
+    }
+
+    document.getElementById("btn_alert")
+      .addEventListener("click", function(){
+        console.log('버튼 눌림! 2초 뒤에 알림~');
+        setTimeout(showMessage, 2000, '안녕! 2초 지남');
+      })
+  </script>
+</body>
+</html>
