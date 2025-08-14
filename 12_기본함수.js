@@ -47,7 +47,7 @@ let ive = [
   '가을'
 ];
 
-console.log('\n================================');
+console.log('\n==========================================');
 console.log('<원본 수정 안하는 함수>');
 
 // 6) concat() : 새 아이템을 뒤에 삽입
@@ -87,3 +87,98 @@ console.log(`ive3 : ${ive3}`);
 
 let obj = {name : '아무개'};
 let obj2 = {...obj};
+
+// 9) join()함수
+// 배열 내 자료를 ,(콤마)로 구분한 후 문자열로 반환
+// ive를 iveMembers로 하드카피
+console.log('\n9) join()함수');
+
+let iveMembers = [...ive];
+console.log(iveMembers.join(' | '));
+
+// 10) sort() - 정렬하기
+// 원본을 수정함, 항상 사본을 만들어서 사용해야한다.
+// 정렬방식 : 숫자, 문자 모두 문자로 변환하여 utf-8(유니코드)로 비교
+// 그래서 숫자 정렬 시 문제 & 언어마다 정렬방식 다른 것 적용x
+console.log('\n10) sort() - 정렬하기');
+
+let sortIve = [...ive];
+sortIve.sort();
+console.log(sortIve);
+
+// 11) reverse() - 역순정렬하기
+// 원본수정함
+console.log('\n11) reverse() - 역순정렬하기');
+
+sortIve.reverse();
+console.log(sortIve);
+
+// 12) sort() 함수로 오름차순, 내림차순 정렬
+console.log('\n12) sort() 함수로 오름차순, 내림차순 정렬');
+
+let numbers = [1, 9, 7, 5, 3];
+console.log(numbers);
+// numbers.sort();
+// console.log(numbers);
+
+// 반환값 규칙
+// 삼항연산으로
+// 양수(1) : a가 b 뒤로 가야함
+// 음수(-1) : a가 b 앞으로 가야함
+// 0 : 현재 순서 유지
+
+// 오름차순 정렬
+numbers.sort((a, b) => {
+  return a > b? 1: -1;
+})
+console.log(numbers);
+// 내림차순 정렬
+numbers.sort((a, b) => {
+  return a < b? 1: -1;
+})
+console.log(numbers);
+
+
+// 13) 배열 중 기준잡아서 정렬하기
+console.log('\n13) 배열 중 기준잡아서 정렬하기');
+const k_group = [
+  {
+    group : '아이브',
+    name : ['장원영','안유진', '이서'],
+    count : 5
+  },
+  {
+    group : '케플러',
+    name : ['최유진', '샤오팅', '마시로'],
+    count : 9
+  },
+  {
+    group : '에스파',
+    name : ['카리나', '윈터','지젤','닝닝'],
+    count : 4
+  },
+]
+console.log(k_group);
+let copyGroup = [...k_group];
+// 1. 아이브 -> ive
+// copyGroup[0].group = 'ive';
+// console.log(copyGroup);
+// 2. 이서 -> 가을
+// copyGroup[0].name[2] = '가을';
+// console.log(copyGroup);
+
+// (13-1) 그룹이름으로 오름차순 정렬하기
+console.log('\n(13-1) 그룹이름으로 오름차순 정렬하기');
+
+copyGroup.sort((a, b) => {
+  return a.group > b.group? 1 : -1;
+})
+console.log(copyGroup);
+
+// (13-2) 그룹이름으로 내림차순 정렬하기
+console.log('\n(13-2) 그룹이름으로 내림차순 정렬하기');
+
+copyGroup.sort((a, b) => {
+  return a.group < b.group? 1 : -1;
+})
+console.log(copyGroup);
